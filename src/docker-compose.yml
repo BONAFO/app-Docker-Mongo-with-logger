@@ -1,0 +1,23 @@
+version: "3"
+services:
+  my-app:
+    image: bonafo/app-docker-mongo-logger
+    ports: 
+        - "10010:3000"  
+    networks:
+        - Nowa
+    environment:
+        - MONGO_URI=mongodb://monguillo:27017/dockersin
+    depends_on:
+        - monguillo
+    volumes:
+        - C:\DockerVolumenes\app-con-logger:/home/node/app/monguillo01/
+  monguillo: 
+    image: mongo
+    ports: 
+        - "10011:27017"  
+    networks:
+        - Nowa
+        
+networks:
+    Nowa:
